@@ -26,6 +26,11 @@ public class ProductController {
         return ResponseEntity.ok(created);
     }
 
+    @PostMapping("/generate")
+    public ResponseEntity<List<Product>> generateProducts(@RequestParam(defaultValue = "100000") int count) {
+        List<Product> products = productService.generateRandomProducts(count);
+        return ResponseEntity.ok(products);
+    }
     @GetMapping
     public ResponseEntity<List<Product>> getAllProducts() {
         List<Product> products = productService.getAllProducts();
